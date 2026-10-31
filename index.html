@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Gerador de Perfil</title>
+<style>
+:root{--azul:#00478D;--azul-escuro:#012F5E;--laranja:#F26A1B;--amarelo:#FFC629;--papel:#F4F7FB;--linha:#D9E2EE;--texto:#14233B;--apoio:#566579;--branco:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--texto);font:16px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+header{background:var(--branco);border-bottom:4px solid var(--laranja)}
+.topo{max-width:880px;margin:auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.topo img{height:36px;display:block}
+.topo .metta{height:24px}
+main{max-width:880px;margin:auto;padding:24px 16px 40px}
+h1{margin:0 0 4px;color:var(--azul);font-size:28px;line-height:1.15}
+.sub{margin:0 0 20px;color:var(--apoio)}
+.acoes{display:flex;gap:12px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;border-radius:10px;padding:14px 22px;min-height:50px;border:2px solid transparent;cursor:pointer}
+button:focus-visible{outline:3px solid var(--amarelo);outline-offset:2px}
+#criar{background:var(--laranja);color:#fff;flex:1 1 240px;font-size:18px}
+#criar:hover{background:#D95A10}
+#baixar{background:#fff;color:var(--azul);border-color:var(--azul);flex:1 1 180px}
+#baixar:hover{background:var(--papel)}
+#baixar[hidden]{display:none}
+#perfil{margin-top:20px;background:#fff;border:1px solid var(--linha);border-radius:14px;overflow:hidden}
+.faixa{background:var(--azul);color:#fff;padding:14px 18px}
+.faixa small{display:block;color:var(--amarelo);font-weight:700;font-size:13px}
+.faixa strong{font-size:24px;line-height:1.15}
+.corpo{display:grid;grid-template-columns:240px 1fr;gap:18px;padding:18px}
+.foto img{width:100%;aspect-ratio:1;object-fit:contain;display:block;border:1px solid var(--linha);border-radius:10px;background:#fff}
+.foto p{margin:8px 0 0;font-size:14px;font-weight:700;color:var(--azul)}
+dl{margin:0;display:grid;grid-template-columns:150px 1fr;gap:7px 12px}
+dt{font-size:13px;font-weight:700;color:var(--apoio);padding-top:2px}
+dd{margin:0}
+dd ul{margin:0;padding-left:18px}
+.precos{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 18px 18px}
+.preco{border-radius:10px;padding:10px 12px;border:1px solid var(--linha)}
+.preco.sip{border-color:var(--laranja);background:#FFF4EC}
+.preco span{display:block;font-size:13px;font-weight:700;color:var(--apoio)}
+.preco small{display:block;color:var(--apoio);font-size:13px}
+.cenario{margin:0 18px 18px;padding:9px 12px;background:var(--papel);border-radius:8px;font-size:14px}
+.melhor{margin:0 18px 18px;padding:9px 12px;background:var(--papel);border:1px solid var(--laranja);border-radius:8px;color:var(--texto)}
+footer{max-width:880px;margin:auto;padding:0 16px 28px;color:var(--apoio);font-size:13px}
+@media(max-width:640px){
+  h1{font-size:24px}
+  .topo img{height:30px}.topo .metta{height:20px}
+  .corpo{grid-template-columns:1fr}
+  .foto img{max-height:240px}
+  dl{grid-template-columns:1fr;gap:1px}
+  dd{margin-bottom:9px}
+  .precos{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header><div class="topo"><img src="assets/logo-sipolatti.png" alt="Sipolatti"><img class="metta" src="assets/logo-metta.png" alt="Metta"></div></header>
+<main>
+  <h1>Gerador de perfil de cliente</h1>
+  <p class="sub">Simulação de atendimento do Workshop da Meta Batida.</p>
+  <div class="acoes">
+    <button id="criar">Criar perfil de cliente</button>
+    <button id="baixar" hidden>Baixar em PDF</button>
+  </div>
+  <section id="perfil" hidden aria-live="polite"></section>
+</main>
+<footer id="aviso"></footer>
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="dados.js"></script>
+<script src="gerador.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
